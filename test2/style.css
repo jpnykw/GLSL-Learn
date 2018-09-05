@@ -1,0 +1,29 @@
+html {
+      text-align: center;
+      margin: 10px auto;
+      padding: 0px;
+
+      background: #131313;
+}
+
+button {
+      background: #232323;
+      border: solid 0px;
+      color: #f3f3f3;
+
+      border-radius: 2px;
+      font-family: Arial;
+      font-size: 28px;
+
+      padding: 5px 10px;
+      margin: 10px;
+
+      transition: .83s;
+      cursor: auto;
+}
+
+button:hover {
+      background: #333;
+
+      cursor: pointer;
+}
