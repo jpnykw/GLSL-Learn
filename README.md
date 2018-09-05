@@ -1,2 +1,1 @@
-# GLSL-Animation
-First project of WebGL used GLSL
+# GLSL-Projects
