@@ -10,10 +10,6 @@
             (ctrl = document.getElementById('controller')).addEventListener('click', () => {
                   ctrl.innerText = stop ? 'STOP' : 'PLAY';
                   stop = !stop;
-
-                  if (stop) {
-
-                  }
             });
 
             let canv = document.getElementById('webgl-canvas'),
