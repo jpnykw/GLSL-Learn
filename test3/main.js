@@ -68,9 +68,9 @@
             let vbo_AttLocation = gl_ctx.getAttribLocation(program, 'position');
 
             gl_ctx.bindBuffer(gl_ctx.ARRAY_BUFFER, vbo_Position);
-      	gl_ctx.enableVertexAttribArray(vbo_AttLocation);
-      	gl_ctx.vertexAttribPointer(vbo_AttLocation, 3, gl_ctx.FLOAT, false, 0, 0);
-      	gl_ctx.bindBuffer(gl_ctx.ELEMENT_ARRAY_BUFFER, vbo_Index);
+            gl_ctx.enableVertexAttribArray(vbo_AttLocation);
+            gl_ctx.vertexAttribPointer(vbo_AttLocation, 3, gl_ctx.FLOAT, false, 0, 0);
+            gl_ctx.bindBuffer(gl_ctx.ELEMENT_ARRAY_BUFFER, vbo_Index);
             gl_ctx.clearColor(0.0, 0.0, 0.0, 1.0);
 
             time.start = new Date().getTime();
