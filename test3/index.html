@@ -10,30 +10,34 @@
             <p><canvas id="webgl-canvas"></canvas></p>
 
             <p>
-                  <input value="0.4" placeholder="彩度"><br>
-                  <input value="0.05" placeholder="光の強さ"><br>
-                  <button id="a">反映</button>
+                  <input class="input-box" value="0.6" placeholder="彩度"><br>
+                  <input class="input-box" value="0.05" placeholder="光の強さ"><br>
+                  <input class="input-box" value="16.0" placeholder="セルの大きさ"><br>
+                  <button id="a">反映</button><br>
+
+                  <br>RGB Balance<br>
+                  <input class="colors" type="range" min="0.0" max="1.0" step="0.01" value="0.0"><br>
+                  <input class="colors" type="range" min="0.0" max="1.0" step="0.01" value="0.0"><br>
+                  <input class="colors" type="range" min="0.0" max="1.0" step="0.01" value="1.0">
             </p>
 
             <script id="fs" type="x-shader/x-fragment">
                   precision mediump float;
-                  uniform float t;
-                  uniform vec2  r;
 
-                  /*
-                  // there's define numbers to uniform.
-                  #define sat 0.4
-                  #define check 1.0
-                  #define l_size 0.05
-                  */
+                  uniform vec2  resolution;
+                  uniform vec2 mouse;
+                  uniform float time;
 
                   uniform float sat;
                   uniform float check;
-                  uniform float l_size;
+                  uniform float light_size;
+                  uniform float box_size;
 
                   uniform float red;
                   uniform float blue;
                   uniform float green;
+
+                  vec2 light_pos = vec2(256.0, 256.0);
 
                   float f(float size, float x, float y) {
                         x = floor((x / size) + 0.5);
@@ -42,14 +46,11 @@
                   }
 
                   void main(void){
-                        vec2 p = (gl_FragCoord.xy * 2.0 - r) / min(r.x, r.y);
-                        float n = mod(f(16.0, gl_FragCoord.x + t * 32.0, gl_FragCoord.y), 2.0);
-                        float l = l_size / length(p);
-
-                        // from top r, g, b.
-                        // gl_FragColor = vec4(vec3(sat + l, vec2(l)) + n, 1.0);
-                        // gl_FragColor = vec4(vec3(l, sat + l, l) + n, 1.0);
-                        // gl_FragColor = vec4(vec3(vec2(l), sat + l) + n, 1.0);
+                        vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
+                        //vec2 p = ((gl_FragCoord.xy - mouse.xy) * 2.0 - resolution) / min(resolution.x, resolution.y);
+                        vec2 q = vec2(p.x - mouse.x, p.y);
+                        float n = mod(f(box_size, gl_FragCoord.x + time * 32.0, gl_FragCoord.y), 2.0);
+                        float l = light_size / length(q);
 
                         float x = l + n;
                         float y = sat + l;
