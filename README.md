@@ -1,6 +1,6 @@
 # GLSL-Projects
 
-traing GLSL...  
+I'm traing GLSL ...  
 
 | Link | Description |
 | - | - |
