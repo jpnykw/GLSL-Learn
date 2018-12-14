@@ -1,6 +1,6 @@
 # GLSL-Projects
 
-I'm traing GLSL ...  
+train and work-in-progress
 
 | Link | Description |
 | - | - |
